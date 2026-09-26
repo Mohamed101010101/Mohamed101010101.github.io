@@ -25,7 +25,7 @@
       --bg-surface: #090E17;
       --bg-card: rgba(13, 19, 32, 0.72);
       --bg-card-hover: rgba(18, 26, 44, 0.85);
-      --bg-glass: rgba(9, 14, 23, 0.82);
+      --bg-glass: rgba(9, 14, 23, 0.85);
       
       --border-subtle: rgba(255, 255, 255, 0.07);
       --border-medium: rgba(255, 255, 255, 0.12);
@@ -79,8 +79,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      selection-background-color: var(--accent-azure);
-      selection-color: #ffffff;
     }
 
     /* Ambient Dynamic Mesh Glows */
@@ -281,27 +279,6 @@
       border-color: var(--accent-azure);
       color: #FFFFFF;
       transform: translateY(-2px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-secondary);
-      border-color: transparent;
-    }
-
-    .btn-ghost:hover {
-      color: var(--accent-azure);
-      background: rgba(41, 151, 255, 0.08);
-    }
-
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.4rem;
-      cursor: pointer;
     }
 
     /* ==========================================================================
@@ -687,10 +664,12 @@
       color: #C9D1D9;
     }
 
-    .feature-icon {
+    .feature-icon-svg {
+      width: 16px;
+      height: 16px;
       color: var(--accent-emerald);
-      font-weight: 800;
-      margin-top: 1px;
+      flex-shrink: 0;
+      margin-top: 3px;
     }
 
     .repo-dir-box {
@@ -818,6 +797,9 @@
       transition: var(--transition-smooth);
       border: none;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .exhibit-thumb-wrap:hover .exhibit-inspect-btn {
@@ -858,6 +840,15 @@
       font-size: 0.75rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
+    }
+
+    .exhibit-download-link {
+      color: var(--accent-azure);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* Fullscreen Modal Lightbox */
@@ -956,119 +947,6 @@
     }
 
     /* ==========================================================================
-       INTERACTIVE ONCOLOGY BENEFIT-RISK SIMULATOR
-       ========================================================================== */
-    .simulator-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-xl);
-      padding: 36px;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-card);
-    }
-
-    .sim-layout {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 36px;
-    }
-
-    .sim-selector-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .sim-btn {
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
-      text-align: left;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .sim-btn:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: var(--border-medium);
-    }
-
-    .sim-btn.active {
-      background: rgba(41, 151, 255, 0.12);
-      border-color: var(--accent-azure);
-      color: #FFFFFF;
-      box-shadow: 0 4px 16px rgba(41, 151, 255, 0.18);
-    }
-
-    .sim-btn-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .sim-btn-class {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-
-    .sim-display-panel {
-      background: #06090F;
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .sim-gauge-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .sim-gauge-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      text-align: center;
-    }
-
-    .sim-gauge-val {
-      font-family: var(--font-mono);
-      font-size: 1.45rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .sim-gauge-lbl {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .val-good { color: #3FB950; }
-    .val-moderate { color: #D29922; }
-    .val-caution { color: #F85149; }
-    .val-blue { color: #58A6FF; }
-
-    /* Interactive Quadrant SVG Plot */
-    .quadrant-svg-wrap {
-      background: #080C14;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      position: relative;
-    }
-
-    /* ==========================================================================
        METHODOLOGICAL RIGOR & COMPUTATIONAL PILLARS
        ========================================================================== */
     .pillars-grid {
@@ -1093,10 +971,16 @@
       box-shadow: var(--shadow-card);
     }
 
-    .pillar-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      display: inline-block;
+    .pillar-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
     }
 
     .pillar-heading {
@@ -1123,11 +1007,14 @@
     }
 
     .pillar-list li::before {
-      content: '▹';
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--accent-azure);
-      font-weight: 700;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-azure);
     }
 
     /* ==========================================================================
@@ -1166,7 +1053,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-subtle);
     }
@@ -1343,6 +1229,38 @@
       margin-top: 18px;
     }
 
+    
+    .tree-icon {
+      display: inline-block;
+      vertical-align: -2px;
+      margin-right: 6px;
+      stroke: var(--accent);
+    }
+    .term-tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-right: 6px;
+    }
+    .term-tag.pass {
+      background: rgba(48, 209, 88, 0.18);
+      color: #30D158;
+      border: 1px solid rgba(48, 209, 88, 0.35);
+    }
+    .term-tag.init {
+      background: rgba(255, 159, 10, 0.18);
+      color: #FF9F0A;
+      border: 1px solid rgba(255, 159, 10, 0.35);
+    }
+    .term-tag.done {
+      background: rgba(10, 132, 255, 0.18);
+      color: #0A84FF;
+      border: 1px solid rgba(10, 132, 255, 0.35);
+    }
+
     /* Toast Notification */
     .toast {
       position: fixed;
@@ -1428,7 +1346,6 @@
       .hero-grid { grid-template-columns: 1fr; }
       .flagship-grid { grid-template-columns: 1fr; }
       .metrics-row { grid-template-columns: repeat(3, 1fr); }
-      .sim-layout { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
     }
 
@@ -1436,9 +1353,7 @@
       .hero-title { font-size: 2.5rem; }
       .metrics-row { grid-template-columns: 1fr 1fr; }
       .nav-menu { display: none; }
-      .menu-toggle { display: block; }
       .gallery-grid { grid-template-columns: 1fr; }
-      .sim-gauge-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1465,7 +1380,6 @@
       <ul class="nav-menu">
         <li><a href="#flagship" class="nav-link">Flagship Engine</a></li>
         <li><a href="#exhibits" class="nav-link">Visual Exhibits</a></li>
-        <li><a href="#simulator" class="nav-link">Decision Simulator</a></li>
         <li><a href="#methodologies" class="nav-link">Methodologies</a></li>
         <li><a href="#toolkit" class="nav-link">Tech Stack</a></li>
         <li><a href="#team" class="nav-link">Team</a></li>
@@ -1478,7 +1392,8 @@
           Academic CV
         </a>
         <a href="https://mohamed-s-diab.github.io/nma-nsclc-evidence-synthesis/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-          Live Monograph ↗
+          Live Monograph
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
     </div>
@@ -1557,15 +1472,15 @@
                 &nbsp;&nbsp;treat1 = arm1, treat2 = arm2, studlab = study_id,<br/>
                 &nbsp;&nbsp;data = os_matrix, sm = <span class="term-str">"HR"</span>, reference = <span class="term-str">"Chemo_Alone"</span><br/>
                 )<br/>
-                <span class="term-out">✓ Number of studies: k = 24</span><br/>
-                <span class="term-out">✓ Total synthesized sample: N = 15,753 patients</span><br/>
-                <span class="term-out">✓ Graph connectivity: Fully bridged star-loop (0 unbridged islands)</span><br/>
+                <span class="term-out"><span class="term-tag pass">PASS</span> Number of studies: k = 24</span><br/>
+                <span class="term-out"><span class="term-tag pass">PASS</span> Total synthesized sample: N = 15,753 patients</span><br/>
+                <span class="term-out"><span class="term-tag pass">PASS</span> Graph connectivity: Fully bridged star-loop (0 unbridged islands)</span><br/>
                 <span class="term-dim">→ Tau^2 (Between-study variance): 0.0184 (95% CI: 0.0000 - 0.0892)</span><br/>
                 <span class="term-dim">→ Global Inconsistency Q-statistic: p = 0.428 (Consistent)</span>
               </div>
 
               <div class="terminal-footer">
-                <span>R 4.6.1 &middot; netmeta v3.6-1 &middot; Deterministic Seed: 20260925</span>
+                <span>R 4.6.1 &middot; netmeta v3.6-1 &middot; Seed: 20260925</span>
                 <button class="run-btn" onclick="simulateRun()">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                   Re-Execute Engine
@@ -1626,19 +1541,19 @@
 
               <div class="feature-list">
                 <div class="feature-point">
-                  <span class="feature-icon">✓</span>
+                  <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   <span><strong>Laplacian Inversion:</strong> Electrical network random-walk synthesis preserving multi-arm covariance.</span>
                 </div>
                 <div class="feature-point">
-                  <span class="feature-icon">✓</span>
+                  <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   <span><strong>Inconsistency Diagnostics:</strong> Node-splitting back-calculation &amp; NetHeat spectral leverage matrices.</span>
                 </div>
                 <div class="feature-point">
-                  <span class="feature-icon">✓</span>
+                  <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   <span><strong>Monte Carlo Simulations:</strong> 10,000-scenario ranking iterations for P-scores and SUCRA distributions.</span>
                 </div>
                 <div class="feature-point">
-                  <span class="feature-icon">✓</span>
+                  <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   <span><strong>Clinical Valuation:</strong> ASCO / ESMO Minimal Clinically Important Difference (MCID) frontiers.</span>
                 </div>
               </div>
@@ -1656,20 +1571,20 @@
 
             <!-- Architecture Directory Tree -->
             <div class="repo-dir-box">
-              <span class="dir-hl">📁 nma-nsclc-evidence-synthesis/</span><br/>
-              ├── <span class="dir-hl">📂 data/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Curated 24-trial extraction tables</span><br/>
-              ├── <span class="dir-hl">📂 scripts/analyses/</span> &nbsp;&nbsp;&nbsp;<span class="term-comment"># 12 sequential mathematical engines</span><br/>
+              <span class="dir-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> nma-nsclc-evidence-synthesis/</span><br/>
+              ├── <span class="dir-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> data/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Curated 24-trial extraction tables</span><br/>
+              ├── <span class="dir-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> scripts/analyses/</span> &nbsp;&nbsp;&nbsp;<span class="term-comment"># 12 sequential mathematical engines</span><br/>
               │&nbsp;&nbsp; ├── <span class="file-hl">01_fit_nma_model.R</span><br/>
               │&nbsp;&nbsp; ├── <span class="file-hl">04_netsplit_inconsistency.R</span><br/>
               │&nbsp;&nbsp; ├── <span class="file-hl">05_netheat_matrix.R</span><br/>
               │&nbsp;&nbsp; ├── <span class="file-hl">11_benefit_risk_tradeoff.R</span><br/>
               │&nbsp;&nbsp; └── <span class="file-hl">12_mcid_analysis.R</span><br/>
-              ├── <span class="dir-hl">📂 outputs/figures/</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># 14 publication exhibits (300 DPI)</span><br/>
-              ├── <span class="dir-hl">📂 report/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Interactive monograph monograph.Rmd</span><br/>
-              ├── <span class="file-hl">📄 DESCRIPTION</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Official rOpenSci compendium spec</span><br/>
-              ├── <span class="file-hl">📄 CITATION.cff</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Machine-readable scholarly attribution</span><br/>
-              ├── <span class="file-hl">📄 renv.lock</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># 86 hermetically locked package versions</span><br/>
-              └── <span class="file-hl">📄 LICENSE</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Open-source MIT License</span>
+              ├── <span class="dir-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> outputs/figures/</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># 14 publication exhibits (300 DPI)</span><br/>
+              ├── <span class="dir-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> report/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Interactive monograph monograph.Rmd</span><br/>
+              ├── <span class="file-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> DESCRIPTION</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Official rOpenSci compendium spec</span><br/>
+              ├── <span class="file-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> CITATION.cff</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Machine-readable scholarly attribution</span><br/>
+              ├── <span class="file-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> renv.lock</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># 86 hermetically locked package versions</span><br/>
+              └── <span class="file-hl"><svg class="tree-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> LICENSE</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-comment"># Open-source MIT License</span>
             </div>
           </div>
         </div>
@@ -1707,127 +1622,6 @@
     </section>
 
     <!-- ==========================================================================
-         INTERACTIVE BENEFIT-RISK DECISION SIMULATOR
-         ========================================================================== -->
-    <section id="simulator" class="section-wrap">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">DECISION ANALYTICS LABORATORY</div>
-          <h2 class="section-title">Interactive Benefit-Risk Decision Simulator</h2>
-          <p class="section-desc">
-            Select a therapeutic intervention to interrogate its bivariate clinical profile against standard platinum doublet chemotherapy in first-line advanced NSCLC.
-          </p>
-        </div>
-
-        <div class="simulator-card">
-          <div class="sim-layout">
-            <!-- Selector Column -->
-            <div class="sim-selector-list">
-              <button class="sim-btn active" onclick="selectRegimen(0)">
-                <div>
-                  <div class="sim-btn-name">Pembrolizumab + Chemotherapy</div>
-                  <div class="sim-btn-class">Anti-PD-1 + Platinum Doublet &middot; KEYNOTE-189 / 407</div>
-                </div>
-                <span>→</span>
-              </button>
-
-              <button class="sim-btn" onclick="selectRegimen(1)">
-                <div>
-                  <div class="sim-btn-name">Nivolumab + Ipilimumab + Chemo</div>
-                  <div class="sim-btn-class">Dual Checkpoint Blockade + 2 cycles Chemo &middot; CheckMate 9LA</div>
-                </div>
-                <span>→</span>
-              </button>
-
-              <button class="sim-btn" onclick="selectRegimen(2)">
-                <div>
-                  <div class="sim-btn-name">Atezolizumab + Bevacizumab + Chemo</div>
-                  <div class="sim-btn-class">Anti-PD-L1 + Anti-VEGF + Chemo &middot; IMpower150</div>
-                </div>
-                <span>→</span>
-              </button>
-
-              <button class="sim-btn" onclick="selectRegimen(3)">
-                <div>
-                  <div class="sim-btn-name">Cemiplimab + Chemotherapy</div>
-                  <div class="sim-btn-class">High-Affinity Anti-PD-1 + Chemo &middot; EMPOWER-Lung 3</div>
-                </div>
-                <span>→</span>
-              </button>
-
-              <button class="sim-btn" onclick="selectRegimen(4)">
-                <div>
-                  <div class="sim-btn-name">Chemotherapy Alone (Standard Anchor)</div>
-                  <div class="sim-btn-class">Platinum Doublet Active Comparator (Reference Group)</div>
-                </div>
-                <span>→</span>
-              </button>
-            </div>
-
-            <!-- Dynamic Output Panel -->
-            <div class="sim-display-panel">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h4 id="simRegimenTitle" style="font-size:1.15rem; color:#FFFFFF; font-weight:700;">Pembrolizumab + Chemotherapy</h4>
-                <span id="simRegimenTag" class="pill-tag" style="background:rgba(63,185,80,0.15); border-color:var(--accent-emerald); color:var(--accent-emerald);">P-Score: 0.912</span>
-              </div>
-
-              <!-- Gauges -->
-              <div class="sim-gauge-grid">
-                <div class="sim-gauge-box">
-                  <div class="sim-gauge-val val-good" id="simValOS">HR 0.61</div>
-                  <div class="sim-gauge-lbl">Overall Survival HR<br/>(95% CI: 0.52 - 0.72)</div>
-                </div>
-
-                <div class="sim-gauge-box">
-                  <div class="sim-gauge-val val-good" id="simValPFS">HR 0.54</div>
-                  <div class="sim-gauge-lbl">Progression-Free HR<br/>(95% CI: 0.46 - 0.63)</div>
-                </div>
-
-                <div class="sim-gauge-box">
-                  <div class="sim-gauge-val val-moderate" id="simValTox">OR 1.34</div>
-                  <div class="sim-gauge-lbl">Grade 3-5 Toxicity OR<br/>(95% CI: 1.09 - 1.65)</div>
-                </div>
-              </div>
-
-              <!-- Interactive Quadrant SVG Plot -->
-              <div class="quadrant-svg-wrap">
-                <svg id="quadrantPlot" width="100%" height="180" viewBox="0 0 460 180">
-                  <!-- Axes and Labels -->
-                  <line x1="50" y1="90" x2="430" y2="90" stroke="#30363D" stroke-width="1.5" stroke-dasharray="4"/>
-                  <line x1="240" y1="15" x2="240" y2="165" stroke="#30363D" stroke-width="1.5" stroke-dasharray="4"/>
-                  
-                  <text x="55" y="28" fill="#3FB950" font-size="10" font-family="monospace" font-weight="bold">QUADRANT II: High Efficacy / Favorable Safety</text>
-                  <text x="250" y="28" fill="#D29922" font-size="10" font-family="monospace">QUADRANT I: High Efficacy / Higher Toxicity</text>
-                  <text x="55" y="160" fill="#6E7681" font-size="10" font-family="monospace">QUADRANT III: Low Efficacy</text>
-                  
-                  <!-- Regimen Dots -->
-                  <circle id="dot0" cx="120" cy="50" r="8" fill="#2997FF" stroke="#FFFFFF" stroke-width="2"/>
-                  <text x="132" y="54" fill="#F0F6FC" font-size="10" font-family="monospace">Pembro+Chemo</text>
-
-                  <circle id="dot1" cx="290" cy="55" r="6" fill="#A371F7"/>
-                  <text x="302" y="59" fill="#8B949E" font-size="9" font-family="monospace">Nivo+Ipi+Chemo</text>
-
-                  <circle id="dot2" cx="340" cy="65" r="6" fill="#A371F7"/>
-                  <text x="352" y="69" fill="#8B949E" font-size="9" font-family="monospace">Atezo+Beva+Chemo</text>
-
-                  <circle id="dot3" cx="150" cy="62" r="6" fill="#A371F7"/>
-                  <text x="162" y="66" fill="#8B949E" font-size="9" font-family="monospace">Cemi+Chemo</text>
-
-                  <circle id="dot4" cx="240" cy="90" r="6" fill="#6E7681"/>
-                  <text x="246" y="104" fill="#8B949E" font-size="9" font-family="monospace">Chemo Alone (Ref)</text>
-                </svg>
-              </div>
-
-              <div id="simTakeaway" style="font-size:0.86rem; color:var(--text-secondary); line-height:1.6; background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:8px; border:1px solid var(--border-subtle);">
-                <strong>Clinical Takeaway:</strong> Pembrolizumab plus platinum doublet provides the optimal balance of overall survival improvement (39% risk reduction) with manageable added toxicity, comfortably exceeding both ASCO and ESMO MCID thresholds.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
          METHODOLOGICAL MATRIX & BIOSTATISTICAL RIGOR
          ========================================================================== -->
     <section id="methodologies" class="section-wrap">
@@ -1841,8 +1635,11 @@
         </div>
 
         <div class="pillars-grid">
+          <!-- Pillar 1: Graph Theory -->
           <div class="pillar-card">
-            <span class="pillar-icon">🧬</span>
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2997FF" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="6" cy="18" r="3"/><path d="M9 6h6M6 9v6M18 9v6M8.5 8.5l7 7"/></svg>
+            </div>
             <h3 class="pillar-heading">Graph-Theoretical Synthesis</h3>
             <ul class="pillar-list">
               <li>Frequentist weighted graph modeling via electrical network analogy</li>
@@ -1852,8 +1649,11 @@
             </ul>
           </div>
 
+          <!-- Pillar 2: Inconsistency -->
           <div class="pillar-card">
-            <span class="pillar-icon">🔍</span>
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A371F7" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </div>
             <h3 class="pillar-heading">Inconsistency Auditing</h3>
             <ul class="pillar-list">
               <li>Node-splitting back-calculation separating direct from indirect trial loops</li>
@@ -1863,8 +1663,11 @@
             </ul>
           </div>
 
+          <!-- Pillar 3: Sparse Data -->
           <div class="pillar-card">
-            <span class="pillar-icon">⚖️</span>
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3FB950" stroke-width="2"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1ZM2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1ZM7 21h10M12 3v18M3 7h18"/></svg>
+            </div>
             <h3 class="pillar-heading">Sparse Data &amp; Bias</h3>
             <ul class="pillar-list">
               <li>Copas non-ignorable selection models for missing outcome data</li>
@@ -1874,8 +1677,11 @@
             </ul>
           </div>
 
+          <!-- Pillar 4: Decision Frontiers -->
           <div class="pillar-card">
-            <span class="pillar-icon">📊</span>
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#58A6FF" stroke-width="2"><path d="M3 3v18h18M7 16l4-4 4 4 6-6"/></svg>
+            </div>
             <h3 class="pillar-heading">Clinical Decision Frontiers</h3>
             <ul class="pillar-list">
               <li>ASCO / ESMO Minimal Clinically Important Difference (MCID) benchmarking</li>
@@ -1904,7 +1710,9 @@
         <div class="stack-grid">
           <div class="stack-card">
             <div class="stack-header">
-              <div class="stack-icon-box">📊</div>
+              <div class="stack-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2997FF" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5ZM6 6h10M6 10h10M6 14h6"/></svg>
+              </div>
               <h3 class="stack-category">Statistical Computing</h3>
             </div>
             <div class="pill-tags">
@@ -1919,7 +1727,9 @@
 
           <div class="stack-card">
             <div class="stack-header">
-              <div class="stack-icon-box">🐳</div>
+              <div class="stack-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
               <h3 class="stack-category">Reproducibility &amp; DevOps</h3>
             </div>
             <div class="pill-tags">
@@ -1933,7 +1743,9 @@
 
           <div class="stack-card">
             <div class="stack-header">
-              <div class="stack-icon-box">🎨</div>
+              <div class="stack-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A371F7" stroke-width="2"><path d="m12 19 7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586"/></svg>
+              </div>
               <h3 class="stack-category">Scientific Authoring</h3>
             </div>
             <div class="pill-tags">
@@ -1947,7 +1759,9 @@
 
           <div class="stack-card">
             <div class="stack-header">
-              <div class="stack-icon-box">📜</div>
+              <div class="stack-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3FB950" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
               <h3 class="stack-category">Evidence Guidelines</h3>
             </div>
             <div class="pill-tags">
@@ -1983,7 +1797,8 @@
               <span class="role-badge role-lead">Lead Investigator</span>
             </div>
             <a href="mailto:Mohamed.98478@Medicine.mti.edu.eg" class="member-email">
-              ✉️ Mohamed.98478@Medicine.mti.edu.eg
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Mohamed.98478@Medicine.mti.edu.eg
             </a>
             <div class="member-credit">
               <strong>CRediT Roles:</strong> Conceptualization, methodology architecture, mathematical R programming (netmeta), data extraction synthesis, manuscript drafting, and project administration.
@@ -1997,7 +1812,8 @@
               <span class="role-badge role-inv">Co-Investigator</span>
             </div>
             <a href="mailto:Badr.98633@Medicine.mti.edu.eg" class="member-email">
-              ✉️ Badr.98633@Medicine.mti.edu.eg
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Badr.98633@Medicine.mti.edu.eg
             </a>
             <div class="member-credit">
               <strong>CRediT Roles:</strong> Dual-independent study selection, survival outcomes numeric extraction, cross-study harmonization, and validation checks.
@@ -2011,7 +1827,8 @@
               <span class="role-badge role-inv">Co-Investigator</span>
             </div>
             <a href="mailto:Ali.98637@Medicine.mti.edu.eg" class="member-email">
-              ✉️ Ali.98637@Medicine.mti.edu.eg
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Ali.98637@Medicine.mti.edu.eg
             </a>
             <div class="member-credit">
               <strong>CRediT Roles:</strong> Dual-independent study selection, progression-free survival data curation, matrix synthesis, and table formatting.
@@ -2025,7 +1842,8 @@
               <span class="role-badge role-inv">Co-Investigator</span>
             </div>
             <a href="mailto:Omar.98550@Medicine.mti.edu.eg" class="member-email">
-              ✉️ Omar.98550@Medicine.mti.edu.eg
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Omar.98550@Medicine.mti.edu.eg
             </a>
             <div class="member-credit">
               <strong>CRediT Roles:</strong> Dual-independent study selection, Cochrane RoB 2.0 risk of bias dual appraisal, verification of numeric inputs.
@@ -2039,7 +1857,8 @@
               <span class="role-badge role-inv">Co-Investigator</span>
             </div>
             <a href="mailto:Mahmoud.103608@Medicine.mti.edu.eg" class="member-email">
-              ✉️ Mahmoud.103608@Medicine.mti.edu.eg
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Mahmoud.103608@Medicine.mti.edu.eg
             </a>
             <div class="member-credit">
               <strong>CRediT Roles:</strong> Dual-independent study selection, CINeMA certainty of evidence evaluation, and supplementary appendix curation.
@@ -2109,18 +1928,22 @@
 
         <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
           <a href="mailto:Mohamed.98478@Medicine.mti.edu.eg" class="btn btn-primary">
-            ✉️ Mohamed.98478@Medicine.mti.edu.eg
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Mohamed.98478@Medicine.mti.edu.eg
           </a>
           <a href="https://orcid.org/0009-0003-3143-387X" class="btn btn-secondary" target="_blank" rel="noopener">
-            ORCID Profile
+            <span style="color:#A6CE39; font-weight:800;">iD</span> ORCID Profile
           </a>
           <a href="https://scholar.google.com/citations?user=_tJ3MkYAAAAJ" class="btn btn-secondary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
             Google Scholar
           </a>
           <a href="https://www.researchgate.net/profile/Mohamed-Said-Mohamed-Diab" class="btn btn-secondary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#00CCBB"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-1.128-.888C14.65.114 13.978 0 13.16 0c-.98 0-1.84.184-2.58.553a5.55 5.55 0 0 0-1.92 1.547 7.02 7.02 0 0 0-1.192 2.378c-.266.925-.4 1.94-.4 3.045 0 1.107.134 2.122.4 3.047.266.924.664 1.718 1.192 2.38.528.663 1.168 1.178 1.92 1.547.74.368 1.6.553 2.58.553.818 0 1.49-.114 2.012-.34.524-.228.9-.524 1.128-.888.243.744.65 1.303 1.213 1.68.565.376 1.255.565 2.073.565.922 0 1.724-.247 2.406-.74.68-.493 1.2-1.182 1.56-2.068.36-.885.54-1.91.54-3.076 0-1.165-.18-2.19-.54-3.075-.36-.886-.88-1.575-1.56-2.068-.682-.493-1.484-.74-2.406-.74zm-6.426 12.825c-.538 0-1.002-.116-1.392-.348-.39-.232-.71-.564-.96-.995-.25-.432-.43-.96-.54-1.583-.11-.624-.165-1.332-.165-2.124 0-.792.055-1.5.165-2.124.11-.623.29-1.15.54-1.583.25-.43.57-.763.96-.995.39-.232.854-.348 1.392-.348.538 0 1.002.116 1.392.348.39.232.71.564.96.995.25.432.43.96.54 1.583.11.624.165 1.332.165 2.124 0 .792-.055 1.5-.165 2.124-.11.623-.29 1.15-.54 1.583-.25.43-.57.763-.96.995-.39.232-.854-.348-1.392-.348z"/></svg>
             ResearchGate
           </a>
           <a href="https://github.com/mohamed-s-diab" class="btn btn-secondary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
             GitHub: @mohamed-s-diab
           </a>
         </div>
@@ -2188,7 +2011,7 @@
   </div>
 
   <!-- Toast Notification -->
-  <div class="toast" id="toastMessage">✓ Copied to clipboard!</div>
+  <div class="toast" id="toastMessage"><span class="term-tag pass">PASS</span> Copied to clipboard!</div>
 
   <!-- ==========================================================================
        SCRIPTS: DYNAMIC INTERACTION LOGIC
@@ -2319,21 +2142,27 @@
         ? exhibits 
         : exhibits.filter(e => e.category === filter);
 
-      filtered.forEach((ex, idx) => {
+      filtered.forEach((ex) => {
         const card = document.createElement('div');
         card.className = 'exhibit-card';
         card.innerHTML = `
           <div class="exhibit-thumb-wrap" onclick="openLightbox('${ex.id}')">
             <span class="exhibit-badge">${ex.badge}</span>
             <img src="${ex.file}" alt="${ex.title}" class="exhibit-thumb" loading="lazy">
-            <button class="exhibit-inspect-btn">🔍 Inspect 300 DPI</button>
+            <button class="exhibit-inspect-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Inspect 300 DPI
+            </button>
           </div>
           <div class="exhibit-info">
             <h4 class="exhibit-title">${ex.title}</h4>
             <p class="exhibit-desc">${ex.desc}</p>
             <div class="exhibit-meta-row">
               <span>Resolution: 300 DPI Vector</span>
-              <a href="${ex.file}" target="_blank" style="color:var(--accent-azure); text-decoration:none; font-weight:600;">Download PNG ↗</a>
+              <a href="${ex.file}" target="_blank" class="exhibit-download-link">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download PNG
+              </a>
             </div>
           </div>
         `;
@@ -2381,9 +2210,9 @@ nma_os &lt;- <span class="term-fn">netmeta</span>(<br/>
 &nbsp;&nbsp;treat1 = arm1, treat2 = arm2, studlab = study_id,<br/>
 &nbsp;&nbsp;data = os_matrix, sm = <span class="term-str">"HR"</span>, reference = <span class="term-str">"Chemo_Alone"</span><br/>
 )<br/>
-<span class="term-out">✓ Number of studies: k = 24</span><br/>
-<span class="term-out">✓ Total synthesized sample: N = 15,753 patients</span><br/>
-<span class="term-out">✓ Graph connectivity: Fully bridged star-loop (0 unbridged islands)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Number of studies: k = 24</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Total synthesized sample: N = 15,753 patients</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Graph connectivity: Fully bridged star-loop (0 unbridged islands)</span><br/>
 <span class="term-dim">→ Tau^2 (Between-study variance): 0.0184 (95% CI: 0.0000 - 0.0892)</span><br/>
 <span class="term-dim">→ Global Inconsistency Q-statistic: p = 0.428 (Consistent)</span>`
       },
@@ -2392,17 +2221,17 @@ nma_os &lt;- <span class="term-fn">netmeta</span>(<br/>
         code: `<span class="term-comment"># Engine 04: Node-Splitting Local Inconsistency Audits</span><br/>
 ns_audit &lt;- <span class="term-fn">netsplit</span>(nma_os)<br/>
 <span class="term-kw">print</span>(ns_audit$compare.matrix)<br/>
-<span class="term-out">✓ Total split comparison nodes: 18 loops evaluated</span><br/>
-<span class="term-out">✓ Pembro+Chemo vs Chemo: Direct HR = 0.60 | Indirect HR = 0.63 (p = 0.741)</span><br/>
-<span class="term-out">✓ Nivo+Ipi+Chemo vs Chemo: Direct HR = 0.69 | Indirect HR = 0.68 (p = 0.912)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Total split comparison nodes: 18 loops evaluated</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Pembro+Chemo vs Chemo: Direct HR = 0.60 | Indirect HR = 0.63 (p = 0.741)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Nivo+Ipi+Chemo vs Chemo: Direct HR = 0.69 | Indirect HR = 0.68 (p = 0.912)</span><br/>
 <span class="term-dim">→ Conclusion: Zero statistically significant local split incoherence detected.</span>`
       },
       {
         file: "05_netheat.R",
         code: `<span class="term-comment"># Engine 05: NetHeat Spectral Leverage Matrix Diagnostics</span><br/>
 nh_matrix &lt;- <span class="term-fn">netheat</span>(nma_os, random = <span class="term-kw">TRUE</span>)<br/>
-<span class="term-out">✓ Spectral decomposition of inconsistency leverage matrix complete</span><br/>
-<span class="term-out">✓ Max leverage hot-spot coefficient: 0.084 (well below 0.30 critical boundary)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Spectral decomposition of inconsistency leverage matrix complete</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Max leverage hot-spot coefficient: 0.084 (well below 0.30 critical boundary)</span><br/>
 <span class="term-dim">→ Design-by-treatment interaction: Q_inc = 14.28 (df = 14, p = 0.430)</span><br/>
 <span class="term-dim">→ PRISMA-NMA Item 15 compliance: Confirmed homogeneous network</span>`
       },
@@ -2410,9 +2239,9 @@ nh_matrix &lt;- <span class="term-fn">netheat</span>(nma_os, random = <span clas
         file: "11_mcid.R",
         code: `<span class="term-comment"># Engine 11 &amp; 12: ASCO / ESMO MCID &amp; Benefit-Risk Plane</span><br/>
 mcid_eval &lt;- <span class="term-fn">eval_mcid_frontiers</span>(nma_os, threshold_hr = <span class="term-num">0.80</span>)<br/>
-<span class="term-out">✓ 10,000 Monte Carlo bootstrap iterations executed</span><br/>
-<span class="term-out">✓ Prob(HR &lt; 0.80) for Pembrolizumab + Chemo: 99.8% (Exceeds MCID)</span><br/>
-<span class="term-out">✓ Prob(HR &lt; 0.80) for Nivolumab + Ipilimumab + Chemo: 94.6% (Exceeds MCID)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> 10,000 Monte Carlo bootstrap iterations executed</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Prob(HR &lt; 0.80) for Pembrolizumab + Chemo: 99.8% (Exceeds MCID)</span><br/>
+<span class="term-out"><span class="term-tag pass">PASS</span> Prob(HR &lt; 0.80) for Nivolumab + Ipilimumab + Chemo: 94.6% (Exceeds MCID)</span><br/>
 <span class="term-dim">→ Quadrant placement: Bivariate benefit-risk frontier generated (300 DPI)</span>`
       }
     ];
@@ -2427,117 +2256,10 @@ mcid_eval &lt;- <span class="term-fn">eval_mcid_frontiers</span>(nma_os, thresho
     function simulateRun() {
       const out = document.getElementById('termOutput');
       const prev = out.innerHTML;
-      out.innerHTML = '<span class="term-dim">⏳ Initializing LAPACK/BLAS matrix solver... computing 15,753 patient covariances...</span>';
+      out.innerHTML = '<span class="term-dim"><span class="term-tag init">EXEC</span> Compiling LAPACK/BLAS matrix solver... computing 15,753 patient covariances...</span>';
       setTimeout(() => {
-        out.innerHTML = prev + '<br/><span class="term-out">⚡ Re-execution finished in 0.48s &middot; All convergence criteria satisfied (Rhat &lt; 1.01).</span>';
+        out.innerHTML = prev + '<br/><span class="term-out"><span class="term-tag done">DONE</span> Re-execution completed in 0.48s &middot; All convergence criteria satisfied (Rhat &lt; 1.01).</span>';
       }, 600);
-    }
-
-    // Interactive Decision Simulator Data
-    const regimens = [
-      {
-        name: "Pembrolizumab + Chemotherapy",
-        tag: "P-Score: 0.912 · Rank #1",
-        tagColor: "#3FB950",
-        os: "HR 0.61",
-        osSub: "(95% CI: 0.52 - 0.72)",
-        pfs: "HR 0.54",
-        pfsSub: "(95% CI: 0.46 - 0.63)",
-        tox: "OR 1.34",
-        toxSub: "(95% CI: 1.09 - 1.65)",
-        takeaway: "<strong>Clinical Takeaway:</strong> Pembrolizumab plus platinum doublet provides the highest overall survival probability (39% mortality reduction) with manageable added toxicity, comfortably exceeding both ASCO and ESMO MCID thresholds.",
-        activeDot: "dot0"
-      },
-      {
-        name: "Nivolumab + Ipilimumab + Chemo",
-        tag: "P-Score: 0.825 · Rank #2",
-        tagColor: "#2997FF",
-        os: "HR 0.69",
-        osSub: "(95% CI: 0.58 - 0.82)",
-        pfs: "HR 0.67",
-        pfsSub: "(95% CI: 0.57 - 0.79)",
-        tox: "OR 1.88",
-        toxSub: "(95% CI: 1.45 - 2.44)",
-        takeaway: "<strong>Clinical Takeaway:</strong> Dual checkpoint blockade (CheckMate 9LA) demonstrates durable long-term landmark survival, but incurs higher Grade 3–5 immune-related and treatment-related toxicity (OR 1.88).",
-        activeDot: "dot1"
-      },
-      {
-        name: "Atezolizumab + Bevacizumab + Chemo",
-        tag: "P-Score: 0.792 · Rank #3",
-        tagColor: "#A371F7",
-        os: "HR 0.76",
-        osSub: "(95% CI: 0.63 - 0.92)",
-        pfs: "HR 0.61",
-        pfsSub: "(95% CI: 0.51 - 0.73)",
-        tox: "OR 2.05",
-        toxSub: "(95% CI: 1.55 - 2.71)",
-        takeaway: "<strong>Clinical Takeaway:</strong> Quadruplet therapy (IMpower150) offers exceptional progression-free survival benefit especially in EGFR-mutant/anti-angiogenic subgroups, but carries the highest overall toxicity burden in the network.",
-        activeDot: "dot2"
-      },
-      {
-        name: "Cemiplimab + Chemotherapy",
-        tag: "P-Score: 0.748 · Rank #4",
-        tagColor: "#58A6FF",
-        os: "HR 0.71",
-        osSub: "(95% CI: 0.53 - 0.95)",
-        pfs: "HR 0.56",
-        pfsSub: "(95% CI: 0.44 - 0.71)",
-        tox: "OR 1.42",
-        toxSub: "(95% CI: 1.05 - 1.93)",
-        takeaway: "<strong>Clinical Takeaway:</strong> Cemiplimab plus chemotherapy (EMPOWER-Lung 3) presents a robust survival gain comparable to classic anti-PD-1 agents with balanced adverse event rates.",
-        activeDot: "dot3"
-      },
-      {
-        name: "Chemotherapy Alone (Standard Anchor)",
-        tag: "P-Score: 0.082 · Reference",
-        tagColor: "#6E7681",
-        os: "HR 1.00",
-        osSub: "(Reference Group)",
-        pfs: "HR 1.00",
-        pfsSub: "(Reference Group)",
-        tox: "OR 1.00",
-        toxSub: "(Reference Group)",
-        takeaway: "<strong>Clinical Takeaway:</strong> Active control comparator anchoring 24 randomized trials (7,128 patients). Standard platinum doublet alone is definitively inferior to all immune checkpoint combinations in overall survival.",
-        activeDot: "dot4"
-      }
-    ];
-
-    function selectRegimen(idx) {
-      document.querySelectorAll('.sim-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i === idx);
-      });
-      const reg = regimens[idx];
-      document.getElementById('simRegimenTitle').innerText = reg.name;
-      const tag = document.getElementById('simRegimenTag');
-      tag.innerText = reg.tag;
-      tag.style.borderColor = reg.tagColor;
-      tag.style.color = reg.tagColor;
-      
-      document.getElementById('simValOS').innerText = reg.os;
-      document.getElementById('simValOS').nextElementSibling.innerText = `Overall Survival HR\n${reg.osSub}`;
-      
-      document.getElementById('simValPFS').innerText = reg.pfs;
-      document.getElementById('simValPFS').nextElementSibling.innerText = `Progression-Free HR\n${reg.pfsSub}`;
-      
-      document.getElementById('simValTox').innerText = reg.tox;
-      document.getElementById('simValTox').nextElementSibling.innerText = `Grade 3-5 Toxicity OR\n${reg.toxSub}`;
-      
-      document.getElementById('simTakeaway').innerHTML = reg.takeaway;
-
-      // Update Quadrant SVG dots
-      for (let i = 0; i < 5; i++) {
-        const dot = document.getElementById('dot' + i);
-        if (i === idx) {
-          dot.setAttribute('r', '10');
-          dot.setAttribute('stroke', '#FFFFFF');
-          dot.setAttribute('stroke-width', '2.5');
-          dot.setAttribute('fill', '#2997FF');
-        } else {
-          dot.setAttribute('r', '6');
-          dot.removeAttribute('stroke');
-          dot.setAttribute('fill', i === 4 ? '#6E7681' : '#A371F7');
-        }
-      }
     }
 
     // Citation Switcher
@@ -2575,9 +2297,9 @@ ER  - `
       document.getElementById('citeContent').innerText = citations[fmt];
     }
 
-    function showToast(msg = "✓ Copied to clipboard!") {
+    function showToast(msg = "<span class="term-tag pass">PASS</span> Copied to clipboard!") {
       const toast = document.getElementById('toastMessage');
-      toast.innerText = msg;
+      toast.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> <span>${msg}</span>`;
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 2500);
     }
@@ -2585,7 +2307,7 @@ ER  - `
     function copyCitation() {
       const text = document.getElementById('citeContent').innerText;
       navigator.clipboard.writeText(text).then(() => {
-        showToast("✓ Citation copied to clipboard!");
+        showToast("<span class="term-tag pass">PASS</span> Citation copied to clipboard!");
       });
     }
 
@@ -2598,7 +2320,7 @@ ER  - `
       link.href = URL.createObjectURL(blob);
       link.download = filename;
       link.click();
-      showToast(`✓ Downloaded ${filename}`);
+      showToast(`<span class="term-tag pass">PASS</span> Downloaded ${filename}`);
     }
 
     // Initialize Page
